@@ -1,0 +1,6 @@
+.venv
+__pycache__
+*.txt
+!requirements.txt
+my_labels.json
+README.md

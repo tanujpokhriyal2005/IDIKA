@@ -1,0 +1,69 @@
+# Production stack on the cloud server: PostGIS + Go API behind Caddy (automatic HTTPS).
+name: fieldproof
+
+services:
+  db:
+    image: postgis/postgis:17-3.5-alpine
+    environment:
+      POSTGRES_USER: fieldproof
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: fieldproof
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fieldproof -d fieldproof"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    restart: always
+
+  api:
+    build: ./backend
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgres://fieldproof:${DB_PASSWORD}@db:5432/fieldproof?sslmode=disable
+      DEV_MODE: "true"          # no SMS gateway yet: OTP is returned to the app
+      SEED_DEMO: "true"
+      SEED_DASHBOARD_DEMO: "false"  # demo dashboard logins share a known password: never on the public server
+      ADMIN_USER: admin
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+    volumes:
+      - uploads:/data/uploads
+    restart: always
+
+  # Land check agent: makes the reports for KMLs uploaded on the dashboard's Land check tab.
+  # Earth Engine does the satellite work; this only waits on it, so it stays small.
+  landcheck:
+    build: ./landcheck
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://fieldproof:${DB_PASSWORD}@db:5432/fieldproof
+      EE_KEY_FILE: /run/ee/key.json
+    volumes:
+      - ./secrets/ee-key.json:/run/ee/key.json:ro
+    mem_limit: 700m
+    restart: always
+
+  caddy:
+    image: caddy:2
+    depends_on: [api]
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      SITE_HOST: ${SITE_HOST}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    restart: always
+
+volumes:
+  pgdata:
+  uploads:
+  caddy_data:
+  caddy_config:

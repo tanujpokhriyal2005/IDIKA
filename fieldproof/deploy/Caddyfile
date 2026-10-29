@@ -1,0 +1,9 @@
+# The sslip.io address is kept for the phones; DASH_HOST is the proper name
+# people open in a browser (company firewalls distrust sslip.io).
+{$SITE_HOST}, {$DASH_HOST:dashboard.idikafoundation.org} {
+	encode gzip
+	request_body {
+		max_size 30MB
+	}
+	reverse_proxy api:8080
+}

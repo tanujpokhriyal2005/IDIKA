@@ -1,0 +1,117 @@
+{
+  "about": "Parcels whose real land type / history was confirmed by our team. These are the agent's first own training labels; they will be added to training once there are enough (aim: 300-500 parcels). Until then they are used only to test the agent.",
+  "parcels": [
+    {
+      "file": "kml-tests/batch1/batch1.kml",
+      "parcel": "KML 2",
+      "truth": "crops",
+      "note": "agriculture, with built-up land growing in its southern part",
+      "confirmed_by": "Tanuj",
+      "date": "2026-10-28"
+    },
+    {
+      "file": "kml-tests/batch1/batch1.kml",
+      "parcel": "kml3",
+      "truth": "crops",
+      "note": "agriculture",
+      "confirmed_by": "Tanuj",
+      "date": "2026-10-28"
+    },
+    {
+      "file": "kml-tests/batch1/batch1.kml",
+      "parcel": "kml 6",
+      "truth": "crops",
+      "note": "agriculture now; tree block on about a third of the parcel until 2019, removed around 2020 (flag confirmed)",
+      "confirmed_by": "Tanuj",
+      "date": "2026-10-28"
+    },
+    {
+      "file": "kml-tests/batch1/batch1.kml",
+      "parcel": "KML4",
+      "truth": "built",
+      "note": "urban",
+      "confirmed_by": "Tanuj",
+      "date": "2026-10-28"
+    },
+    {
+      "file": "kml-tests/batch1/batch1.kml",
+      "parcel": "KML5",
+      "truth": "crops",
+      "note": "agriculture",
+      "confirmed_by": "Tanuj",
+      "date": "2026-10-28"
+    },
+    {
+      "file": "kml-tests/batch1/batch1.kml",
+      "parcel": "KML 7",
+      "truth": "water",
+      "note": "Ganga river; satellite record shows a shifting channel: sand bar most of 2020-2025, channel on the parcel since Nov 2025",
+      "confirmed_by": "Tanuj",
+      "date": "2026-10-28"
+    },
+    {
+      "file": "kml-tests/batch1/batch1.kml",
+      "parcel": "KML 8",
+      "truth": "trees",
+      "note": "tree plantation (likely poplar); Google Earth history shows it cleared between Jan 2018 and Mar 2020 and grown back by Jan 2026",
+      "confirmed_by": "Tanuj",
+      "date": "2026-10-28"
+    },
+    {
+      "file": "kml-tests/batch1/batch1.kml",
+      "parcel": "KML 9",
+      "truth": "crops",
+      "note": "agriculture",
+      "confirmed_by": "Tanuj",
+      "date": "2026-10-28"
+    },
+    {
+      "file": "kml-tests/known/1-KML1-crop-field.kml",
+      "parcel": "KML1",
+      "truth": "crops",
+      "note": "agriculture near Aligarh",
+      "confirmed_by": "Tanuj",
+      "date": "2026-10-27"
+    },
+    {
+      "file": "kml-tests/batch2/batch2.kml",
+      "parcel": "KML1",
+      "truth": "crops",
+      "note": "agriculture",
+      "confirmed_by": "Tanuj",
+      "date": "2026-10-28"
+    },
+    {
+      "file": "kml-tests/batch2/batch2.kml",
+      "parcel": "KML2",
+      "truth": "crops",
+      "note": "agriculture",
+      "confirmed_by": "Tanuj",
+      "date": "2026-10-28"
+    },
+    {
+      "file": "kml-tests/batch2/batch2.kml",
+      "parcel": "KML3",
+      "truth": "crops",
+      "note": "agriculture with 4 building outlines inside (flag confirmed)",
+      "confirmed_by": "Tanuj",
+      "date": "2026-10-28"
+    },
+    {
+      "file": "kml-tests/batch2/batch2.kml",
+      "parcel": "KML4",
+      "truth": "built",
+      "note": "urban, 13 buildings inside (flag confirmed)",
+      "confirmed_by": "Tanuj",
+      "date": "2026-10-28"
+    },
+    {
+      "file": "kml-tests/batch2/batch2.kml",
+      "parcel": "KML5",
+      "truth": "crops",
+      "note": "agriculture",
+      "confirmed_by": "Tanuj",
+      "date": "2026-10-28"
+    }
+  ]
+}

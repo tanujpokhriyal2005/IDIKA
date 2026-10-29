@@ -1,0 +1,32 @@
+# Secrets: never commit (the repo is public)
+**/.env
+**/.env.*
+!**/.env.example
+fieldproof/deploy/secrets/
+**/local.properties
+*.jks
+*.keystore
+*.pem
+
+# Build output and local tools
+**/build/
+**/.gradle/
+**/.kotlin/
+**/.venv/
+__pycache__/
+.idea/
+*.iml
+
+# App builds and data dumps (publish APKs as GitHub Releases instead)
+*.apk
+*.dump
+
+# Real farm locations and their reports
+kml-tests/
+landcheck-agent/*.txt
+!landcheck-agent/requirements.txt
+
+# Private notes and infrastructure details (local only)
+*.private.md
+fieldproof/deploy/aws-resources.txt
+landcheck-agent/.ee-project
